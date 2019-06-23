@@ -1,18 +1,24 @@
 package pl.idzikdev.HotelApp.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import pl.idzikdev.HotelApp.model.request.ReservationRequest;
 import pl.idzikdev.HotelApp.model.response.ReservationResponse;
+import pl.idzikdev.HotelApp.repository.PageableRoomRepository;
 
 import java.time.LocalDate;
 
 @RestController
 @RequestMapping(ResourceConstants.ROOM_RESERVATION_V1)
 public class ReservationResource {
+    @Autowired
+    PageableRoomRepository pageableRoomRepository;
+
     @RequestMapping(path = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<ReservationResponse> getAvailableRooms(
             @RequestParam(value = "checkin")
