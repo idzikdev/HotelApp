@@ -1,7 +1,10 @@
 package pl.idzikdev.HotelApp.entity;
 
+import org.springframework.data.repository.cdi.Eager;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "room")
@@ -14,6 +17,21 @@ public class RoomEntity {
     @NotNull
     private String price;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private List<ReservationEntity> reservationEntityList;
+
+    public List<ReservationEntity> getReservationEntityList() {
+        return reservationEntityList;
+    }
+
+    public void setReservationEntityList(List<ReservationEntity> reservationEntityList) {
+        this.reservationEntityList = reservationEntityList;
+    }
+
+    public void addReservationEntity(ReservationEntity reservationEntity){
+        //TODO null
+        reservationEntityList.add(reservationEntity);
+    }
     public Integer getRoomNumber() {
         return roomNumber;
     }

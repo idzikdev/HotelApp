@@ -7,7 +7,7 @@ import pl.idzikdev.HotelApp.model.Self;
 import pl.idzikdev.HotelApp.model.response.ReservableRoomResponse;
 import pl.idzikdev.HotelApp.rest.ResourceConstants;
 
-public class RoomEntityToReservationResponseConverter implements Converter<RoomEntity, ReservableRoomResponse> {
+public class RoomEntityToReservableRoomResponseConverter implements Converter<RoomEntity, ReservableRoomResponse> {
     @Override
     public ReservableRoomResponse convert(RoomEntity roomEntity) {
         ReservableRoomResponse reservableRoomResponse =new ReservableRoomResponse();

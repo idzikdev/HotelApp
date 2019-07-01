@@ -6,7 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ConversionServiceFactoryBean;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
-import pl.idzikdev.HotelApp.converter.RoomEntityToReservationResponseConverter;
+import pl.idzikdev.HotelApp.converter.ReservationEntityToReservationResponseConverter;
+import pl.idzikdev.HotelApp.converter.ReservationRequestToReservationEntityConverter;
+import pl.idzikdev.HotelApp.converter.RoomEntityToReservableRoomResponseConverter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +18,9 @@ import java.util.Set;
 public class ConversionConfig {
     private Set<Converter> getConverters() {
         Set<Converter> converters = new HashSet<>();
-        converters.add(new RoomEntityToReservationResponseConverter());
+        converters.add(new RoomEntityToReservableRoomResponseConverter());
+        converters.add(new ReservationRequestToReservationEntityConverter());
+        converters.add(new ReservationEntityToReservationResponseConverter());
         return converters;
     }
     @Bean

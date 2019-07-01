@@ -2,7 +2,7 @@ package pl.idzikdev.HotelApp.model.response;
 
 import pl.idzikdev.HotelApp.model.Links;
 
-public class ReservationResponse {
+public class ReservableRoomResponse {
     private Long id;
     private Integer roomNumber;
     private Integer price;
@@ -40,11 +40,11 @@ public class ReservationResponse {
         this.links = links;
     }
 
-    public ReservationResponse(Integer roomNumber, Integer price) {
+    public ReservableRoomResponse(Integer roomNumber, Integer price) {
         this.roomNumber = roomNumber;
         this.price = price;
     }
 
-    public ReservationResponse() {
+    public ReservableRoomResponse() {
     }
 }

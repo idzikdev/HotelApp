@@ -1,16 +1,33 @@
-package pl.idzikdev.HotelApp.model.request;
+package pl.idzikdev.HotelApp.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-public class ReservationRequest {
+@Entity
+@Table(name = "reservation")
+public class ReservationEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long roomId;
+    @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate checkin;
+    @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate checkout;
+    @ManyToOne
+    private RoomEntity roomEntity;
+
+    public ReservationEntity(@NotNull LocalDate checkin, @NotNull LocalDate checkout) {
+        this.checkin = checkin;
+        this.checkout = checkout;
+    }
+
+    public ReservationEntity() {
+    }
 
     public Long getId() {
         return id;
@@ -36,20 +53,11 @@ public class ReservationRequest {
         this.checkout = checkout;
     }
 
-    public Long getRoomId() {
-        return roomId;
+    public RoomEntity getRoomEntity() {
+        return roomEntity;
     }
 
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
-    }
-
-    public ReservationRequest(Long roomId, LocalDate checkin, LocalDate checkout) {
-        this.roomId = roomId;
-        this.checkin = checkin;
-        this.checkout = checkout;
-    }
-
-    public ReservationRequest() {
+    public void setRoomEntity(RoomEntity roomEntity) {
+        this.roomEntity = roomEntity;
     }
 }

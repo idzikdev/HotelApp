@@ -1,15 +1,10 @@
-package pl.idzikdev.HotelApp.model.request;
-
-import org.springframework.format.annotation.DateTimeFormat;
+package pl.idzikdev.HotelApp.model.response;
 
 import java.time.LocalDate;
 
-public class ReservationRequest {
+public class ReservationResponse {
     private Long id;
-    private Long roomId;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate checkin;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate checkout;
 
     public Long getId() {
@@ -36,20 +31,12 @@ public class ReservationRequest {
         this.checkout = checkout;
     }
 
-    public Long getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
-    }
-
-    public ReservationRequest(Long roomId, LocalDate checkin, LocalDate checkout) {
-        this.roomId = roomId;
+    public ReservationResponse(Long id, LocalDate checkin, LocalDate checkout) {
+        this.id = id;
         this.checkin = checkin;
         this.checkout = checkout;
     }
 
-    public ReservationRequest() {
+    public ReservationResponse() {
     }
 }
